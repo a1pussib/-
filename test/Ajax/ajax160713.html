@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对Ajax操作返回的文档，使用XMLHttpRequest对象的responseXML属性</title>
+</head>
+<body>
+	<form action=""> 
+		<label>选择客户：
+		<select name="customers" onchange="showCustomer(this.value)">
+		<option value="ALFKI">Alfreds Futterkiste</option>
+		<option value="NORTS ">North/South</option>
+		<option value="WOLZA">Wolski Zajazd</option>
+		</select></label>
+	</form>
+
+<b><span id="companyname"></span></b><br />
+<span id="contactname"></span><br />
+<span id="address"></span>
+<span id="city"></span><br/>
+<span id="country"></span>
+<script src="selectcustomer_xml.js"></script>
+</body>
+</html>
