@@ -1,0 +1,125 @@
+@import "_mixin";
+$tool-size:52px;
+/*为什么我将图标的代码移到最后面  图标的位置会改变*/
+.toolbar-item, .toolbar-btn, .toolbar-icon, .toolbar-text{
+    width: $tool-size;
+    height: $tool-size;
+}
+.toolbar-icon, .toolbar-text {
+    position: absolute;
+    left: 0;
+    color: #fff;
+    text-align: center;
+    @include transition (top 1s)
+    
+}
+@font-face {
+    font-family: 'icomoon';
+    src:    url('fonts/icomoon.eot?1k867h');
+    src:    url('fonts/icomoon.eot?1k867h#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?1k867h') format('truetype'),
+        url('fonts/icomoon.woff?1k867h') format('woff'),
+        url('fonts/icomoon.svg?1k867h#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-connection::before {
+    content: "\e91b";
+}
+.icon-mobile::before {
+    content: "\e958";
+}
+.icon-bubbles::before {
+    content: "\e96c";
+}
+.icon-shift::before {
+    content: "\ea4f";
+}
+
+    *{margin: 0;padding: 0;}
+        
+        .toolbar {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -$tool-size / 2;
+            
+        }
+        .toolbar-item {
+            position: relative;
+            display: block;
+            margin-top: 1px;
+            &:hover {
+                .toolbar-icon {
+                    top: -$tool-size;
+                }                
+                .toolbar-text {
+                    top: 0 ;
+                }
+
+                .toolbar-layer{
+                @include opacity(1);
+                @include scale(1);
+                }
+                
+            }
+
+        }
+        .toolbar-btn {
+            position: absolute;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+        }
+        .toolbar-icon {
+            top: 0;
+            background-color: #d0d6d9;
+            font-size: 30px;
+            line-height: $tool-size;
+           
+        }       
+        .toolbar-text {
+            top: $tool-size;
+            background-color: #98a1a6;
+            padding-top: 12px;
+            font-size: 12px;
+            line-height: 1.2;
+        }
+        .toolbar-layer {
+            position: absolute;
+            right: $tool-size - 6;
+            bottom:-10px;
+            width: 172px;
+            background-image : url(toolbar_img.png);
+            background-repeat: no-repeat;
+            @include opacity(0);
+            @include scale(0.01);
+            @include transform-origin(95% 95%);
+            @include transition(all 1s);
+        }
+        .toolbar-layer-1 {
+                height: 212px;
+                background-position: 0 0;
+        }
+        .toolbar-layer-3 {
+                height: 194px;
+                background-position: 0 0;
+        }
+
+    

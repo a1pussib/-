@@ -1,0 +1,61 @@
+		$tool-size:52px;
+	.toolbar-item, .toolbar-layer {
+  		background-image: url(toolbar.png);
+		background-repeat:no-repeat;
+}
+	*{margin: 0;padding: 0;}
+		
+		.toolbar {
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			margin-left: -$tool-size / 2;
+			
+		}
+		/**/
+		.toolbar-item {
+			position: relative;
+			display: block;
+			width: $tool-size;
+			height: $tool-size;
+			margin-top: 1px;
+			
+			@include transition(background-position 1s);
+			&:hover{
+				.toolbar-layer{
+				@include opacity(1);
+				@include scale(1);
+			}
+			}
+
+		} 
+		.toolbar-item-1 {
+			@include toolbar-item(-798px, -860px);
+			.toolbar-layer{
+				height: 212px;
+				background-position: 0 0;
+			}
+		}
+		.toolbar-item-2 {
+		@include toolbar-item(-426px, -487px);
+	}
+		.toolbar-item-3 {
+		@include toolbar-item(-550px, -612px);				
+			.toolbar-layer{
+				height: 194px;
+				background-position: 0 -222px;
+			}			
+		}
+		.toolbar-item-4 {
+		@include toolbar-item(-674px, -736px);
+	}
+		.toolbar-layer {
+			position: absolute;
+			right: $tool-size - 6;
+			bottom:-10px;
+			width: 172px;
+			@include opacity(0);
+			@include scale(0.01);
+			@include transform-origin(95% 95%);
+			@include transition(all 1s);
+		}
