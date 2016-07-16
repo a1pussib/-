@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ConsoleDom</title>
+</head>
+<body>
+	<div id="console"></div>
+	<script type="text/javascript">
+		var console=null;
+		var req = null;
+
+		function sendRequest(url, params, Httpmethod) {
+			if(!Httpmethod){
+				Httpmethod='GET';
+			}
+			 req = initHttpRequest();
+			if(req) {
+				req.onreadystatechange=onReadyState;
+				req.open(Httpmethod,url,true);
+				req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+				req.send(params);
+			}
+		}
+		function initHttpRequest() {
+			var xhr=null;
+			var xhr = window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject('Microsoft.XMLHTTP');
+			return xhr;
+		}
+		function onReadyState() {
+			var ready = req.readyState;
+			var data = null;
+			if(ready == 4){
+				data = req.responseText;
+			} else {
+				data = 'loading...('+ready+')';
+			} 
+			toConsole(data);
+		}
+		function toConsole(data) {
+			if(console!=null){
+				var newLine = document.createElement('div');
+				console.appendChild(newLine);
+				var txt = document.createTextNode(data);
+				newLine.appendChild(txt);
+			}
+		}
+		window.onload=function() {
+			console=document.getElementById('console');
+			sendRequest('data.txt');	
+		} 
+	</script>
+</body>
+</html>

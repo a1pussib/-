@@ -1,0 +1,32 @@
+@mixin toolbar-item($start, $hover){
+		background-position: 0 $start;
+		&:hover {
+			background-position: 0 $hover;
+		} 
+	}
+	@mixin transition($transition){
+		-webkit-transition: $transition;
+		   -moz-transition: $transition;
+			-ms-transition: $transition;
+			 -o-transition: $transition;
+		        transition: $transition;
+	}
+	@mixin transform-origin($orign){
+			-webkit-transform-origin: $orign;
+			   -moz-transform-origin: $orign;
+			    -ms-transform-origin: $orign;
+			     -o-transform-origin: $orign;
+					transform-origin: $orign;
+	}
+	@mixin scale($scale) {
+		-webkit-transform: scale($scale);
+		-moz-transform: scale($scale);
+		-ms-transform: scale($scale);
+		-o-transform: scale($scale);
+		transform: scale($scale);
+
+	}
+	@mixin opacity($opacity){
+		opacity: $opacity;
+		filter: alpha(opacity=$opacity*100);
+	}
