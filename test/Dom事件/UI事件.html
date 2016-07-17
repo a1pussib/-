@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>UI事件</title>
+</head>
+<body>
+	<div id="example">
+		<img src="program.jpg" alt="一起编程" id="img">
+	</div>
+	<script type="text/javascript" src="Dom2.js"></script>
+	<script type="text/javascript">
+	/*load事件*/
+		EventUtil.addHandler(window,'load',function(){
+			alert('window is already onload')
+		})
+		var image = document.getElementById('img');
+		EventUtil.addHandler(image,'load',function(event) {
+			event =EventUtil.getEvent(event);
+			alert(EventUtil.getTarget(event).src);
+		})
+		EventUtil.addHandler(window,'load',function() {
+			var example = document.getElementById('example');
+			var img2 = document.createElement('img');
+			
+			EventUtil.addHandler(img2,'load',function(event) {
+				event =EventUtil.getEvent(event);
+				alert(EventUtil.getTarget(event).src);
+			});
+			example.appendChild(img2)
+			img2.src='program.jpg';
+			img2.alt='shijian';
+		})
+
+		// var script =document.createElement('script');
+		// EventUtil.addHandler(script,'load',function(event) {
+		// 	alert("loaded")
+		// });
+		// script.src="Dom2.js";
+		// document.body.appendChild(script);
+	</script>
+</body>
+</html>
