@@ -5,4 +5,4 @@
     'string',
     'number', : NaN Infinity -Infinity Number.MAX_VALUE Number.MIN_VALUE
     'object',
-    'function'
+    'function',
