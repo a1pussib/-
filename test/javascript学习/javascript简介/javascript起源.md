@@ -1,1 +1,1 @@
-最主要的三个方面ECMAScript DOM(文档对象模型) BOM(浏览器对象模型)
+JavaScript语言最主要的三个方面 ECMAScript DOM(文档对象模型) BOM(浏览器对象模型)
