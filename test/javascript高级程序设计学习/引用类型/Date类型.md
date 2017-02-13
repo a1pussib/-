@@ -2,7 +2,7 @@ Date类型真的对于我来说真的是很莫名，完全对时间没有概念
 
 最基础的方法 
 
-    var date = new Date() //返回UTC的时间
+    var date = new Date() //返回UTC的时间 也可以直接在Date中传入日期 函数会自动调用Date.parse()函数
                 如果你想根据特定的事件创建对象
                Date.parse() // 括号中传入年份的日期 然后他会转换成毫秒数 从1970年1月1日午夜 开始计算
                Date.UTC() // 
