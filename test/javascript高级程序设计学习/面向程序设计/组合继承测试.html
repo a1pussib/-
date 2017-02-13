@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function SuperType(name){
+            this.name = name
+            this.color = ['red']
+        }
+
+        SuperType.prototype.getSuperValue = function() {
+            alert(this.name);
+        }
+
+        function SupType(name,age){
+            SuperType.call(this,name);
+            this.age = age;
+        }
+
+        SupType.prototype = new SuperType();
+        SupType.prototype.constructor = SupType ;
+        SupType.prototype.sayAge = function() {
+            alert(this.age);
+        }
+        var instance = new SupType('Ni',29);
+        instance.color.push('black');
+        instance.getSuperValue();
+        console.log(instance.color)
+        var instance1= new SupType('Hi',28);
+        instance1.getSuperValue();
+        console.log(instance1.color)
+
+    </script>
+</body>
+</html>
