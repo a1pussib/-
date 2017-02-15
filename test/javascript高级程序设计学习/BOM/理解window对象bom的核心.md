@@ -1,0 +1,2 @@
+BOM的核心对象是window,它表示浏览器的一个实例。在浏览器中，window对象有双重角色，它既是通过JavaScript访问浏览器窗口的一个借口，有事ECMAScript 规定的Global对象。这意味着在网页中定义任何一个对象、变量和函数，都以window作为其global对象，因此有权访问global函数
+
