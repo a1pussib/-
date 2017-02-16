@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        String.prototype.format = function() {
+    var args = arguments;
+    return this.replace(/\{(\d+)\}/g, function(m, i) {
+        return args[i];
+    });
+};
+String.prototype.urlParameterClear = function() {
+    var url = location.href.replace(new RegExp(this + "=[^&]*", "gi"), "").replace(/&&/g, "&").replace(/\?&/, "?");
+    return !url.match(/\?/g) ? url + "?" : !url.match(/(&|\?)$/) ? url + "&" : url;
+ 
+};
+String.prototype.urlRequst = function() {
+    var url = location.href;
+    var str = "[\?&]" + this + "=([^&]*)";
+    var re = new RegExp(str, "gi");
+    if (!re.test(url)) return "";
+    re.exec(url);
+    return RegExp.$1;
+ 
+};
+function Pagination(ini) {
+    var $ = this;
+    for (var o in ini) {
+        $[o] = ini[o];
+    }
+    var en = $.Global && $.Global == 'en';
+    $.Template = $.Template ? $.Template : !en ? '<span>共：{RecordCount}条 {PageSize}条/页 {CurrentPage}页/{PageCount}页</span> {List}' : '<span>Page {CurrentPage} of {PageCount} ({RecordCount} items) PageSize：{PageSize}</span> {List}';
+    $.CurrentPage = parseInt($.Callback ? $.CurrentPage : $.Separator.urlRequst());
+    $.CurrentPage = $.CurrentPage || 1;
+    $.TotalPags = Math.ceil($.RecordCount / $.PageSize);
+    $.RecordCount = parseInt($.RecordCount);
+ 
+    if ($.TotalPags <= 10 || $.CurrentPage <= 3) {
+        $.index = 1;
+        $.endPage = 10 > $.TotalPags ? $.TotalPags : 10;
+    }
+    else {
+        if ($.TotalPags - $.CurrentPage <= 7) {
+            $.index = $.TotalPags - 9;
+            $.endPage = $.TotalPags;
+        } else {
+            $.index = $.CurrentPage - 2;
+            $.endPage = $.CurrentPage + 7;
+        }
+    }
+    var s = [];
+    var url = $.Callback ? 'javascript:{0}('.format($.Callback) : '{0}{1}='.format($.Separator.urlParameterClear(), $.Separator);
+    var bracket = $.Callback ? ')' : '';
+    if ($.CurrentPage > 1) {
+        s.push('<a href="{0}1{1}{2}" title="{4}"><<</a> <a href="{0}{3}{1}{2}" title="{5}"><</a> '.format(url, $.Callback ? $.Attach : '', bracket, $.CurrentPage - 1, en ? 'first' : '首页', en ? 'previous' : '上一页'));
+    }
+    for (var i = $.index; i <= $.endPage; i++) {
+        s.push($.CurrentPage == i ? '<a class="curr">{0}</a> '.format(i) : '<a href="{0}{3}{1}{2}" title="{4}">{3}</a> '.format(url, $.Callback ? $.Attach : '', bracket, i, en ? 'page:{0}'.format(i) : '第{0}页'.format(i)));
+    }
+    if ($.TotalPags > $.CurrentPage) {
+        s.push('<a href="{0}{3}{1}{2}" title="{5}">></a> <a href="{0}{6}{1}{2}" title="{4}">>></a>'.format(url, $.Callback ? $.Attach : '', bracket, $.CurrentPage + 1, en ? 'end' : '末页', en ? 'next' : '下一页', $.TotalPags));
+    }
+ 
+    var html = $.Template;
+    html = html.replace("{RecordCount}", $.RecordCount).replace("{PageSize}", $.PageSize).replace("{PageCount}", $.TotalPags).replace("{CurrentPage}", $.CurrentPage).replace('{List}', s.join(''));
+ 
+    var o = document.getElementById($.ControlId);
+    if (o) {
+        o.innerHTML = html;
+    }
+}
+//示例（Javascript 涵数回调方式）-----------------------------
+  function XO(p, t, c) {
+//执行 AJAX 数据调用方法
+  //并显示返回数据
+  // p为当前页
+  //调用分页方法
+  new Pagination({
+RecordCount: 2000,
+CurrentPage: p,
+PageSize: 4,
+ControlId: "x",
+Attach: ",2,'中国'",
+Template: "",
+Global: "cn",
+Separator: 'page',
+Callback: "XO"
+});
+}
+//初使为调用第6页
+XO(6);
+//示例（URL 附加参数方式）-----------------------------
+new Pagination({
+RecordCount: 2000,
+PageSize: 4,
+ControlId: "o",
+Template: "",
+Global: "en",
+Separator: 'page'
+});
+    </script>
+</body>
+</html>

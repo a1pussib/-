@@ -1,0 +1,54 @@
+#logo-line {
+    height: 40px;
+    line-height: 40px;
+    background-color: #fff;
+
+    border: 1px solid #c9c9c9;
+    border-left-style: none;
+    border-right-style: none;
+    background: url('http://ossweb-img.qq.com/images/js/topfiles/ost1410/ost-bg.png') no-repeat ;
+    background-repeat: repeat-x;
+}
+#logo-line-article {
+    width: 1200px;
+    height: 40px;
+}
+/* 头部向左浮动 */
+.logo-bg {
+    background: url('http://ossweb-img.qq.com/images/js/topfiles/ost1410/ost-bg.png') no-repeat -6.2% 19.1%;
+    width: 205px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+}
+#qq-dance {
+    background: url('https://ossweb-img.qq.com/htdocs/o2/201701/272729094_88521614_1485159116_230_40.jpg') no-repeat;
+    width: 230px;
+    height: 40px;
+    line-height: 40px;
+
+}
+
+/* 头部向右浮动 */
+.down-arrow {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    background: url('http://ossweb-img.qq.com/images/js/topfiles/ost1410/ost-bg.png') no-repeat;
+    background-position: -150px -134px;
+    margin-left: 5px;
+}
+
+/* body 内容 */
+#main {
+    position: relative;
+    background: url("http://ossweb-img.qq.com/upload/adw/image/1484568098/1484568098.jpg") ;
+    min-width: 1000px;
+    background-position: 50% 0;
+    height: 860px;
+}
+#menu li{
+    height: 75px;
+    line-height: 75px;
+    text-align: center;
+}
