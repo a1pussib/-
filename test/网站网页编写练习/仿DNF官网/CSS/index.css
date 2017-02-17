@@ -8,6 +8,7 @@
     border-right-style: none;
     background: url('http://ossweb-img.qq.com/images/js/topfiles/ost1410/ost-bg.png') no-repeat ;
     background-repeat: repeat-x;
+    min-width: 800px;
 }
 #logo-line-article {
     width: 1200px;

@@ -11,14 +11,16 @@
 <body>
     <!-- 设置blackground后的宽度是不可以继承的 -->
     <!-- 当设置css也是有先后顺序的 -->
+    <!-- 当浮动元素随着页面的缩小会变动的时候 可以给父元素增加一个宽度 -->
     <!-- 这个页面写的太垃圾了 需要重构 -->
+
     <!-- 头部 -->
     <div id="logo-line">
-        <div id="logo-line-article" class="center">
+<!--         <div id="logo-line-article" class="center">
             <div class="lt">
-                <div class="logo-bg lt" >
+                <div class="logo-bg lt" > -->
                 <!-- 这里有个问题怎么使用相对定位来对网页进行导航 -->
-                    <a href="game.qq.com" title="腾讯" style="width:inherit;height:inherit;"></a>
+<!--                     <a href="game.qq.com" title="腾讯" style="width:inherit;height:inherit;"></a>
                 </div>
                 <div id="qq-dance" class="rt">
                     <div id="qq-dance-img"></div>
@@ -27,15 +29,20 @@
             <div class="rt">
                 腾讯游戏排行<span class="down-arrow"></span>
             </div>
-        </div>
+        </div> -->
+        <ul style="overflow:hidden;">
+            <li class="logo-bg lt"><a href=""></a></li>
+            <li class="lt" id="qq-dance"><a href=""></a></li>
+            <li class="rt"><a href="">腾讯游戏排行</a><span class="down-arrow"></span></li>
+        </ul>
     </div>
     <!-- 内容 -->
     <div id="main" >
-        <div style="width:1000px;margin:0 auto;">
+        <div style="width:1000px;margin:0 auto;position:relative;">
             <div >
-                <a href="#" style="position:absolute;display:block;width:640px;height:448px;top: 50px;left: 295.3px;border: 1px solid yellow;overflow:hidden;"></a>
+                <a href="#" style="position:absolute;display:block;width:640px;height:448px;top: 50px;left: 179px;border: 1px solid yellow;overflow:hidden;"></a>
             </div>
-            <div id="show" style="position: absolute;border: 1px solid red;top: 490px;left: 293.8px;width:639px;height:302px;">
+            <div id="show" style="position: absolute;border: 1px solid red;top: 505px;left: 179px;width:639px;height:302px;">
                 <div>
                     <video width="480" style="302px;">
                      <!--  <source
